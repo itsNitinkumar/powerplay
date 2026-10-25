@@ -1,0 +1,201 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 960" width="100%" height="100%" style="background-color: #0F172A; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF385C"/>
+      <stop offset="100%" stop-color="#E00B41"/>
+    </linearGradient>
+    <linearGradient id="edgeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#0369A1"/>
+    </linearGradient>
+    <linearGradient id="gatewayGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4F46E5"/>
+      <stop offset="100%" stop-color="#3730A3"/>
+    </linearGradient>
+    <linearGradient id="svcGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="dataGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0D9488"/>
+      <stop offset="100%" stop-color="#0F766E"/>
+    </linearGradient>
+    <linearGradient id="busGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EA580C"/>
+      <stop offset="100%" stop-color="#C2410C"/>
+    </linearGradient>
+    <filter id="dropShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <!-- Title & Subtitle -->
+  <text x="50" y="55" font-size="28" font-weight="bold" fill="#F8FAFC">Production-Scale Vacation Rental Marketplace Architecture</text>
+  <text x="50" y="85" font-size="15" fill="#94A3B8">High-concurrency global infrastructure for listings, search, bookings, payments &amp; real-time event distribution</text>
+
+  <!-- 1. CLIENT LAYER -->
+  <g transform="translate(50, 110)">
+    <rect width="1300" height="75" rx="10" fill="#1E293B" stroke="#334155" stroke-width="1.5" filter="url(#dropShadow)"/>
+    <text x="25" y="44" font-size="16" font-weight="bold" fill="#38BDF8">1. CLIENTS &amp; INTERFACES</text>
+    
+    <rect x="250" y="15" width="230" height="45" rx="6" fill="#334155"/>
+    <text x="365" y="42" font-size="13" font-weight="600" fill="#F8FAFC" text-anchor="middle">Next.js Web (SSR / SSG)</text>
+    
+    <rect x="510" y="15" width="220" height="45" rx="6" fill="#334155"/>
+    <text x="620" y="42" font-size="13" font-weight="600" fill="#F8FAFC" text-anchor="middle">iOS Mobile (Swift / Native)</text>
+    
+    <rect x="760" y="15" width="220" height="45" rx="6" fill="#334155"/>
+    <text x="870" y="42" font-size="13" font-weight="600" fill="#F8FAFC" text-anchor="middle">Android Mobile (Kotlin)</text>
+
+    <rect x="1010" y="15" width="250" height="45" rx="6" fill="#334155"/>
+    <text x="1135" y="42" font-size="13" font-weight="600" fill="#F8FAFC" text-anchor="middle">Partner &amp; Host Public API</text>
+  </g>
+
+  <!-- Flow Arrow -->
+  <line x1="700" y1="185" x2="700" y2="215" stroke="#38BDF8" stroke-width="2.5" stroke-dasharray="4,4"/>
+  <polygon points="700,222 695,213 705,213" fill="#38BDF8"/>
+
+  <!-- 2. EDGE & CDN LAYER -->
+  <g transform="translate(50, 225)">
+    <rect width="1300" height="85" rx="10" fill="url(#edgeGrad)" stroke="#38BDF8" stroke-width="1.5" filter="url(#dropShadow)"/>
+    <text x="25" y="38" font-size="16" font-weight="bold" fill="#FFFFFF">2. GLOBAL EDGE &amp; CDN</text>
+    <text x="25" y="60" font-size="12" fill="#BAE6FD">Cloudflare Anycast + Vercel POPs</text>
+
+    <rect x="300" y="18" width="280" height="50" rx="6" fill="#0369A1" stroke="#38BDF8" stroke-width="1"/>
+    <text x="440" y="42" font-size="13" font-weight="bold" fill="#FFFFFF" text-anchor="middle">DDoS / WAF / Bot Defense</text>
+    <text x="440" y="58" font-size="11" fill="#BAE6FD" text-anchor="middle">Rate limiting, SSL termination, geo routing</text>
+
+    <rect x="620" y="18" width="310" height="50" rx="6" fill="#0369A1" stroke="#38BDF8" stroke-width="1"/>
+    <text x="775" y="42" font-size="13" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Dynamic Image CDN (Cloudinary / Imgix)</text>
+    <text x="775" y="58" font-size="11" fill="#BAE6FD" text-anchor="middle">WebP / AVIF conversion, multi-resolution</text>
+
+    <rect x="970" y="18" width="290" height="50" rx="6" fill="#0369A1" stroke="#38BDF8" stroke-width="1"/>
+    <text x="1115" y="42" font-size="13" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Static Asset Cache &amp; SWR</text>
+    <text x="1115" y="58" font-size="11" fill="#BAE6FD" text-anchor="middle">Page shell caching, instant revalidation</text>
+  </g>
+
+  <!-- Flow Arrow -->
+  <line x1="700" y1="310" x2="700" y2="340" stroke="#818CF8" stroke-width="2.5" stroke-dasharray="4,4"/>
+  <polygon points="700,347 695,338 705,338" fill="#818CF8"/>
+
+  <!-- 3. API GATEWAY -->
+  <g transform="translate(50, 350)">
+    <rect width="1300" height="60" rx="10" fill="url(#gatewayGrad)" stroke="#818CF8" stroke-width="1.5" filter="url(#dropShadow)"/>
+    <text x="25" y="36" font-size="15" font-weight="bold" fill="#FFFFFF">3. API GATEWAY (Kong / Envoy)</text>
+    <text x="350" y="35" font-size="13" fill="#E0E7FF">JWT Auth Verification  |  Schema Validation  |  GraphQL Federation / REST Gateway  |  Traffic Canary</text>
+  </g>
+
+  <!-- Flow Arrows to Services -->
+  <line x1="160" y1="410" x2="160" y2="445" stroke="#94A3B8" stroke-width="2"/>
+  <line x1="380" y1="410" x2="380" y2="445" stroke="#94A3B8" stroke-width="2"/>
+  <line x1="600" y1="410" x2="600" y2="445" stroke="#94A3B8" stroke-width="2"/>
+  <line x1="820" y1="410" x2="820" y2="445" stroke="#94A3B8" stroke-width="2"/>
+  <line x1="1040" y1="410" x2="1040" y2="445" stroke="#94A3B8" stroke-width="2"/>
+  <line x1="1240" y1="410" x2="1240" y2="445" stroke="#94A3B8" stroke-width="2"/>
+
+  <!-- 4. MICROSERVICES LAYER -->
+  <g transform="translate(50, 445)">
+    <!-- Listing Service -->
+    <rect x="0" y="0" width="200" height="110" rx="8" fill="#1E293B" stroke="#FF385C" stroke-width="2" filter="url(#dropShadow)"/>
+    <text x="100" y="28" font-size="14" font-weight="bold" fill="#FF385C" text-anchor="middle">Listing Service</text>
+    <text x="100" y="48" font-size="11" fill="#94A3B8" text-anchor="middle">Go / Node.js</text>
+    <text x="100" y="68" font-size="11" fill="#CBD5E1" text-anchor="middle">Properties &amp; Details</text>
+    <text x="100" y="85" font-size="11" fill="#CBD5E1" text-anchor="middle">Photos &amp; Amenities</text>
+
+    <!-- Booking Service -->
+    <rect x="220" y="0" width="200" height="110" rx="8" fill="#1E293B" stroke="#38BDF8" stroke-width="2" filter="url(#dropShadow)"/>
+    <text x="320" y="28" font-size="14" font-weight="bold" fill="#38BDF8" text-anchor="middle">Booking Service</text>
+    <text x="320" y="48" font-size="11" fill="#94A3B8" text-anchor="middle">Java / Spring Boot</text>
+    <text x="320" y="68" font-size="11" fill="#CBD5E1" text-anchor="middle">Calendar Hold &amp; Locks</text>
+    <text x="320" y="85" font-size="11" fill="#CBD5E1" text-anchor="middle">Saga Orchestrator</text>
+
+    <!-- Payment Service -->
+    <rect x="440" y="0" width="200" height="110" rx="8" fill="#1E293B" stroke="#34D399" stroke-width="2" filter="url(#dropShadow)"/>
+    <text x="540" y="28" font-size="14" font-weight="bold" fill="#34D399" text-anchor="middle">Payment Service</text>
+    <text x="540" y="48" font-size="11" fill="#94A3B8" text-anchor="middle">Node.js (PCI-DSS)</text>
+    <text x="540" y="68" font-size="11" fill="#CBD5E1" text-anchor="middle">Stripe / Razorpay</text>
+    <text x="540" y="85" font-size="11" fill="#CBD5E1" text-anchor="middle">Escrow &amp; Host Payouts</text>
+
+    <!-- Search Service -->
+    <rect x="660" y="0" width="200" height="110" rx="8" fill="#1E293B" stroke="#FBBF24" stroke-width="2" filter="url(#dropShadow)"/>
+    <text x="760" y="28" font-size="14" font-weight="bold" fill="#FBBF24" text-anchor="middle">Search &amp; Geospatial</text>
+    <text x="760" y="48" font-size="11" fill="#94A3B8" text-anchor="middle">Python / FastAPI</text>
+    <text x="760" y="68" font-size="11" fill="#CBD5E1" text-anchor="middle">Geo-distance queries</text>
+    <text x="760" y="85" font-size="11" fill="#CBD5E1" text-anchor="middle">Faceting &amp; Filtering</text>
+
+    <!-- Review Service -->
+    <rect x="880" y="0" width="200" height="110" rx="8" fill="#1E293B" stroke="#A78BFA" stroke-width="2" filter="url(#dropShadow)"/>
+    <text x="980" y="28" font-size="14" font-weight="bold" fill="#A78BFA" text-anchor="middle">Review Service</text>
+    <text x="980" y="48" font-size="11" fill="#94A3B8" text-anchor="middle">Node.js</text>
+    <text x="980" y="68" font-size="11" fill="#CBD5E1" text-anchor="middle">Verified Stay Ratings</text>
+    <text x="980" y="85" font-size="11" fill="#CBD5E1" text-anchor="middle">Score Aggregation</text>
+
+    <!-- Notification Service -->
+    <rect x="1100" y="0" width="200" height="110" rx="8" fill="#1E293B" stroke="#FB7185" stroke-width="2" filter="url(#dropShadow)"/>
+    <text x="1200" y="28" font-size="14" font-weight="bold" fill="#FB7185" text-anchor="middle">Notification Service</text>
+    <text x="1200" y="48" font-size="11" fill="#94A3B8" text-anchor="middle">Go / Workers</text>
+    <text x="1200" y="68" font-size="11" fill="#CBD5E1" text-anchor="middle">WebSockets / Push</text>
+    <text x="1200" y="85" font-size="11" fill="#CBD5E1" text-anchor="middle">SMS &amp; Email Delivery</text>
+  </g>
+
+  <!-- 5. EVENT STREAMING BUS -->
+  <g transform="translate(50, 585)">
+    <rect width="1300" height="60" rx="10" fill="url(#busGrad)" stroke="#FB923C" stroke-width="1.5" filter="url(#dropShadow)"/>
+    <text x="25" y="36" font-size="15" font-weight="bold" fill="#FFFFFF">5. DISTRIBUTED EVENT BUS (Apache Kafka Cluster)</text>
+    <text x="440" y="35" font-size="13" fill="#FFEDD5">Topics: listing-updates | booking-events | payment-settled | reviews | analytics-stream</text>
+  </g>
+
+  <!-- Flow Arrows to Storage -->
+  <line x1="200" y1="645" x2="200" y2="675" stroke="#2DD4BF" stroke-width="2"/>
+  <line x1="530" y1="645" x2="530" y2="675" stroke="#2DD4BF" stroke-width="2"/>
+  <line x1="860" y1="645" x2="860" y2="675" stroke="#2DD4BF" stroke-width="2"/>
+  <line x1="1200" y1="645" x2="1200" y2="675" stroke="#2DD4BF" stroke-width="2"/>
+
+  <!-- 6. DATA STORAGE TIER -->
+  <g transform="translate(50, 675)">
+    <!-- PostgreSQL -->
+    <rect x="0" y="0" width="300" height="120" rx="8" fill="#1E293B" stroke="#0D9488" stroke-width="2" filter="url(#dropShadow)"/>
+    <text x="150" y="28" font-size="14" font-weight="bold" fill="#2DD4BF" text-anchor="middle">Primary Database (PostgreSQL)</text>
+    <text x="150" y="50" font-size="12" fill="#94A3B8" text-anchor="middle">AWS Aurora Multi-AZ + Read Replicas</text>
+    <text x="150" y="72" font-size="11" fill="#CBD5E1" text-anchor="middle">- Listings, Hosts, Bookings, Users</text>
+    <text x="150" y="90" font-size="11" fill="#CBD5E1" text-anchor="middle">- ACID Transactions &amp; Strict Consistency</text>
+    <text x="150" y="106" font-size="10" fill="#64748B" text-anchor="middle">PgBouncer Connection Pooling</text>
+
+    <!-- Redis Cluster -->
+    <rect x="330" y="0" width="300" height="120" rx="8" fill="#1E293B" stroke="#0D9488" stroke-width="2" filter="url(#dropShadow)"/>
+    <text x="480" y="28" font-size="14" font-weight="bold" fill="#2DD4BF" text-anchor="middle">In-Memory Cache (Redis Cluster)</text>
+    <text x="480" y="50" font-size="12" fill="#94A3B8" text-anchor="middle">AWS ElastiCache / Redis Enterprise</text>
+    <text x="480" y="72" font-size="11" fill="#CBD5E1" text-anchor="middle">- Distributed Locks (Booking Hold)</text>
+    <text x="480" y="90" font-size="11" fill="#CBD5E1" text-anchor="middle">- Sub-millisecond Listing Cache (TTL)</text>
+    <text x="480" y="106" font-size="10" fill="#64748B" text-anchor="middle">User Session &amp; Rate-Limiting Tokens</text>
+
+    <!-- Elasticsearch -->
+    <rect x="660" y="0" width="300" height="120" rx="8" fill="#1E293B" stroke="#0D9488" stroke-width="2" filter="url(#dropShadow)"/>
+    <text x="810" y="28" font-size="14" font-weight="bold" fill="#2DD4BF" text-anchor="middle">Search Engine (Elasticsearch / OpenSearch)</text>
+    <text x="810" y="50" font-size="12" fill="#94A3B8" text-anchor="middle">Multi-Node Clustered Index</text>
+    <text x="810" y="72" font-size="11" fill="#CBD5E1" text-anchor="middle">- Geospatial polygon / radius indexing</text>
+    <text x="810" y="90" font-size="11" fill="#CBD5E1" text-anchor="middle">- Full-text keyword tokenization</text>
+    <text x="810" y="106" font-size="10" fill="#64748B" text-anchor="middle">CDC Sync via Debezium + Kafka</text>
+
+    <!-- S3 Storage -->
+    <rect x="990" y="0" width="310" height="120" rx="8" fill="#1E293B" stroke="#0D9488" stroke-width="2" filter="url(#dropShadow)"/>
+    <text x="1145" y="28" font-size="14" font-weight="bold" fill="#2DD4BF" text-anchor="middle">Object Store (AWS S3 / Cloudflare R2)</text>
+    <text x="1145" y="50" font-size="12" fill="#94A3B8" text-anchor="middle">High Durability Blob Storage (99.999999999%)</text>
+    <text x="1145" y="72" font-size="11" fill="#CBD5E1" text-anchor="middle">- 43 Original &amp; Optimized Photos</text>
+    <text x="1145" y="90" font-size="11" fill="#CBD5E1" text-anchor="middle">- Invoices &amp; Legal Verification PDFs</text>
+    <text x="1145" y="106" font-size="10" fill="#64748B" text-anchor="middle">Pre-signed URL direct client upload</text>
+  </g>
+
+  <!-- 7. INFRASTRUCTURE & OBSERVABILITY FOOTER -->
+  <g transform="translate(50, 825)">
+    <rect width="630" height="90" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1.5"/>
+    <text x="25" y="28" font-size="13" font-weight="bold" fill="#F8FAFC">OBSERVABILITY &amp; SRE</text>
+    <text x="25" y="52" font-size="12" fill="#94A3B8">Metrics &amp; Dashboards: Prometheus + Grafana</text>
+    <text x="25" y="70" font-size="12" fill="#94A3B8">Distributed Tracing: OpenTelemetry + Jaeger | Logging: Elastic / Vector</text>
+
+    <rect x="670" y="0" width="630" height="90" rx="8" fill="#1E293B" stroke="#475569" stroke-width="1.5"/>
+    <text x="695" y="28" font-size="13" font-weight="bold" fill="#F8FAFC">DEPLOYMENT &amp; CI/CD STRATEGY</text>
+    <text x="695" y="52" font-size="12" fill="#94A3B8">Kubernetes (EKS / GKE) with Horizontal Pod Autoscaling (HPA)</text>
+    <text x="695" y="70" font-size="12" fill="#94A3B8">GitOps via Argo CD | Zero-downtime Blue/Green deployments | Terraform IaC</text>
+  </g>
+</svg>
